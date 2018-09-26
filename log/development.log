@@ -1,0 +1,21 @@
+Started GET "/stations" for 127.0.0.1 at 2018-09-26 12:29:49 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StationsController#index as HTML
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "stations"."name", "stations"."id" FROM "stations"[0m
+  [1m[36mStation Load (0.1ms)[0m  [1m[34mSELECT  "stations".* FROM "stations" WHERE "stations"."name" = ? ORDER BY "stations"."id" ASC LIMIT ?[0m  [["name", "East Ham"], ["LIMIT", 1]]
+  Rendering stations/index.erb within layouts/application
+  Rendered stations/index.erb within layouts/application (7.5ms)
+Completed 200 OK in 210ms (Views: 192.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/stations?utf8=%E2%9C%93&from=157&n=5&commit=Submit" for 127.0.0.1 at 2018-09-26 12:29:52 -0400
+Processing by StationsController#index as HTML
+  Parameters: {"utf8"=>"✓", "from"=>"157", "n"=>"5", "commit"=>"Submit"}
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "stations"."name", "stations"."id" FROM "stations"[0m
+  [1m[36mStation Load (8.7ms)[0m  [1m[34mSELECT DISTINCT id || "," || s1.to_id || "," || s2.to_id || "," || s3.to_id || "," || s4.to_id AS ignore, s5.to_id AS last FROM "stations" INNER JOIN station_links AS s1 ON s1.from_id = id INNER JOIN station_links AS s2 ON s2.from_id = s1.to_id INNER JOIN station_links AS s3 ON s3.from_id = s2.to_id INNER JOIN station_links AS s4 ON s4.from_id = s3.to_id INNER JOIN station_links AS s5 ON s5.from_id = s4.to_id WHERE "stations"."id" = ?[0m  [["id", 157]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "stations"."name" FROM "stations" WHERE "stations"."id" IN (393, 15, 69, 256, 116, 205, 109, 109, 133, 237, 348, 359, 385, 393, 133, 59, 65, 190, 231, 594, 590, 594, 234, 237, 338, 389, 590, 159, 231, 594, 167, 133, 176, 332, 162, 171, 170, 180, 151, 361) ORDER BY "stations"."name" ASC[0m
+  Rendering stations/index.erb within layouts/application
+  Rendered stations/index.erb within layouts/application (6.8ms)
+Completed 200 OK in 63ms (Views: 20.7ms | ActiveRecord: 9.9ms)
+
+

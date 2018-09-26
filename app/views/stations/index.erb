@@ -1,0 +1,27 @@
+ <%= form_tag stations_path, method: :get do %>
+
+  <div>
+    <%= label_tag :from, "Starting Stop:" %>
+    <%= select_tag :from, options_for_select(@stations, @from), disabled: true %>
+    <%= hidden_field_tag :from, @from%>
+  </div>
+
+  <div>
+    <%= label_tag :n, "Nth Stop" %>
+    <%= number_field_tag :n, @n %>
+  </div>
+
+  <br/>
+
+    <%= submit_tag "Submit" %>
+
+  <br/>
+  <br/>
+  <% if @results.present? %>
+    <ul>
+      <% @results.each do |res| %>
+      <li><%= res %></li>
+      <% end %>
+    <ul>
+  <% end %>
+ <% end %>
